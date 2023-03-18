@@ -1,9 +1,11 @@
-// Define the necessary classes to describe a simple Electroinc Health Record containing:
+// Define the necessary classes to describe a simple
+// Electronic Health Record containing:
 // - the patient information such as birthday, sex
 // - heart rate data (full series of data and average of the specific day)
 // - sequence of weight and height data
 // - drugs (time of intake, quantity and note)
-// Write a main function instantiating a EHR, filling it with some data and showing the summary of the current state
+// Write a main function instantiating a EHR, filling it with some
+// data and showing the summary of the current state
 // of the patient ie. the latest data available in each category
 
 // generic class for generic health data
@@ -36,6 +38,24 @@ class HeartRate extends HealthData {
       : this.average =
             hr.reduce((value, element) => value + element) ~/ hr.length,
         super(day);
+      // this is another possible constructor with two different ways to calculate the average
+      // HeartRate(
+      //   this.hr,
+      //   super.day,
+      // ) {
+      //   // using the reduce method of List
+      //   // average = hr.reduce((value, element) {
+      //   //   return value + element;
+      //   // });
+      //   // average = average ~/ hr.length;
+      
+      //   // using a for loop
+      //   // int value = 0;
+      //   // for (var element in hr) {
+      //   //   value = value + element;
+      //   // }
+      //   // average = value ~/ hr.length;
+      // }
 
   // the toString method is overridden from the Object superclass to print a string describing the class object
   @override
@@ -120,7 +140,7 @@ class EHR {
 void main(List<String> args) {
   // creation of a new EHR
   EHR ehr = EHR(Patient(DateTime(2000, 01, 01), 'M', 'Mario'));
-  
+
   // add some data
   ehr.addDrug(DrugIntake(DateTime.now(), 1, 'Tachipirina'));
   ehr.addWeight(Weight(73, DateTime.now().subtract(Duration(days: 5))));

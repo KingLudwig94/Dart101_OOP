@@ -49,7 +49,36 @@ class Dog extends Animal implements Comparable {
   }
 
   @override
+  String toString() {
+    return 'Dog($weight)';
+  }
+
+  @override
   int compareTo(other) {
+    // if (this.weigth < (other as Dog).weigth) {
+    //   return -1;
+    // } else if (this.weigth > other.weigth) {
+    //   return 1;
+    // } else {
+    //   return 0;
+    // }
     return this.weight - (other as Dog).weight;
   }
+}
+
+void main(List<String> args) {
+  Dog a = Dog(10);
+  Dog b = Dog(9);
+
+  if (a.compareTo(b) > 0) {
+    print('A è più pesante di B');
+  } else if (a.compareTo(b) < 0) {
+    print('B è più pesante di A');
+  } else {
+    print('Pesano uguali');
+  }
+
+  List<Dog> list = [a, b];
+  list.sort();
+  print(list);
 }
